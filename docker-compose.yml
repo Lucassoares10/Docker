@@ -1,0 +1,15 @@
+version: '3.2'
+services:
+    app:
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile
+        container_name: emec
+        volumes:
+            - ./.:/var/www/html
+        ports:
+            - "80:80"
+        privileged: true
+        environment:
+            - APP_CONFIG_FILE=/var/www/html/app-config-file.php
+            - APPLICATION_ENV=development
